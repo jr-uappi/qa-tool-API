@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common"
-import type { SupabaseService } from "../auth/supabase.service"
-import type { CreateActivityLogDto } from "../dto/create-activity-log.dto"
+import { SupabaseService } from "../auth/supabase.service"
+import { CreateActivityLogDto } from "../dto/create-activity-log.dto"
 import type { ActivityLog } from "../types/test-management"
 import type { User } from "../types/auth"
 

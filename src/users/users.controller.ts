@@ -2,7 +2,7 @@ import { Controller, Get, UseGuards, Patch, Param } from "@nestjs/common"
 import { JwtAuthGuard } from "../auth/jwt-auth.guard"
 import { RolesGuard } from "../auth/roles.guard"
 import { Roles } from "../auth/roles.decorator"
-import type { UsersService } from "./users.service"
+import { UsersService } from "./users.service"
 import type { Role } from "../types/auth" // Importar Role
 
 @UseGuards(JwtAuthGuard, RolesGuard) // Proteger todas as rotas neste controlador

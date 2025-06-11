@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Req } from "@nestjs/common"
-import type { TestCasesService } from "./test-cases.service"
-import type { CreateTestCaseDto } from "../dto/create-test-case.dto"
-import type { UpdateTestCaseDto } from "../dto/update-test-case.dto"
+import { TestCasesService } from "./test-cases.service"
+import { CreateTestCaseDto } from "../dto/create-test-case.dto"
+import { UpdateTestCaseDto } from "../dto/update-test-case.dto"
 import { ApiBearerAuth, ApiTags, ApiQuery } from "@nestjs/swagger"
 
 @ApiTags("test-cases")

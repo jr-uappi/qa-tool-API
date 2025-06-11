@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common"
-import type { SupabaseService } from "../auth/supabase.service"
-import type { CreateTestRunDto } from "../dto/create-test-run.dto"
-import type { UpdateTestRunDto } from "../dto/update-test-run.dto"
+import { SupabaseService } from "../auth/supabase.service"
+import { CreateTestRunDto } from "../dto/create-test-run.dto"
+import { UpdateTestRunDto } from "../dto/update-test-run.dto"
 import type { TestRun, TestRunCase } from "../types/test-management"
 
 @Injectable()

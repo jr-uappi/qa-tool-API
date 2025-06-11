@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, UseGuards, Req, Query } from "@nestjs/common"
-import type { ActivityLogsService } from "./activity-logs.service"
-import type { CreateActivityLogDto } from "../dto/create-activity-log.dto"
+import { ActivityLogsService } from "./activity-logs.service"
+import { CreateActivityLogDto } from "../dto/create-activity-log.dto"
 import { JwtAuthGuard } from "../auth/jwt-auth.guard"
 import { RolesGuard } from "../auth/roles.guard"
 import { ApiBearerAuth, ApiTags, ApiQuery } from "@nestjs/swagger"

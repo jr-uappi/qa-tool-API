@@ -1,5 +1,5 @@
 import { Injectable, type CanActivate, type ExecutionContext } from "@nestjs/common"
-import type { Reflector } from "@nestjs/core"
+import { Reflector } from "@nestjs/core"
 import { ROLES_KEY } from "./roles.decorator"
 import type { Role } from "../types/auth" // Importar a interface Role do seu frontend
 

@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from "@nestjs/common"
-import type { SupabaseService } from "../auth/supabase.service"
-import type { CreateAutomatedTestResultDto } from "../dto/create-automated-test-result.dto"
-import type { UpdateAutomatedTestResultDto } from "../dto/update-automated-test-result.dto"
-import type { AutomatedTestResult } from "../types/test-management"
+import { SupabaseService } from "../auth/supabase.service"
+import { CreateAutomatedTestResultDto } from "../dto/create-automated-test-result.dto"
+import { UpdateAutomatedTestResultDto } from "../dto/update-automated-test-result.dto"
+import { AutomatedTestResult } from "../types/test-management"
 
 @Injectable()
 export class AutomatedTestResultsService {

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from "@nestjs/common"
-import type { SupabaseService } from "../auth/supabase.service"
-import type { CreateCommentDto } from "../dto/create-comment.dto"
-import type { UpdateCommentDto } from "../dto/update-comment.dto"
+import { SupabaseService } from "../auth/supabase.service"
+import { CreateCommentDto } from "../dto/create-comment.dto"
+import { UpdateCommentDto } from "../dto/update-comment.dto"
 import type { Comment } from "../types/test-management"
 import type { User } from "../types/auth"
 

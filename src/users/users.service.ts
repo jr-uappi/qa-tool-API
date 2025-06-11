@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import type { SupabaseService } from "../auth/supabase.service"
+import { SupabaseService } from "../auth/supabase.service"
 import type { Role } from "../types/auth" // Importar Role
 
 @Injectable()
