@@ -12,9 +12,6 @@ export class SupabaseService implements OnModuleInit {
     const supabaseUrl = this.configService.get<string>("SUPABASE_URL")
     const supabaseKey = this.configService.get<string>("SUPABASE_SERVICE_ROLE_KEY")
 
-    console.log("Supabase URL:", supabaseUrl)
-    console.log("Supabase KEY:", supabaseKey)
-
     if (!supabaseUrl || !supabaseKey) {
       throw new Error("Supabase URL or Key not found in environment variables.")
     }
