@@ -12,9 +12,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false, // Deixe o Passport lidar com a expiração do token
-      secretOrKey: configService.get<string>("SUPABASE_JWT_SECRET"),
-    })
+      ignoreExpiration: false,
+      secretOrKeyProvider: (req, rawJwtToken, done) => {
+        const key = configService.get<string>('SUPABASE_JWT_SECRET')
+        done(null, key)}
+    }
+  )
   }
 
   async validate(payload: any) {

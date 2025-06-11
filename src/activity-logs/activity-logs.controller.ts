@@ -1,9 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Req, Query } from "@nestjs/common"
+import type { ActivityLogsService } from "./activity-logs.service"
+import type { CreateActivityLogDto } from "../dto/create-activity-log.dto"
+import { JwtAuthGuard } from "../auth/jwt-auth.guard"
+import { RolesGuard } from "../auth/roles.guard"
+import { ApiBearerAuth, ApiTags, ApiQuery } from "@nestjs/swagger"
 
-@Controller('activity-logs')
+@ApiTags("activity-logs")
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Controller("activity-logs")
 export class ActivityLogsController {
+  constructor(private readonly activityLogsService: ActivityLogsService) {}
+
+  @Post()
+  async create(@Body() createActivityLogDto: CreateActivityLogDto, @Req() req) {
+    return this.activityLogsService.create(createActivityLogDto, req.user)
+  }
+
   @Get()
-  getAllLogs(): string {
-    return 'Lista de logs de atividade';
+  @ApiQuery({ name: "projectId", required: false, type: String, description: "Filter by project ID" })
+  async findAll(@Query("projectId") projectId?: string) {
+    return this.activityLogsService.findAll(projectId)
   }
 }

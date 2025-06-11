@@ -1,19 +1,27 @@
-import { PartialType } from "@nestjs/mapped-types"
-import { CreateTestRunDto } from "./create-test-run.dto"
 import { ApiProperty } from "@nestjs/swagger"
-import { IsOptional, ValidateNested, ArrayMinSize } from "class-validator"
+import { IsOptional, ValidateNested, ArrayMinSize, IsString, IsUUID } from "class-validator"
 import { Type } from "class-transformer"
-import { UpdateTestRunCaseDto } from "./update-test-run-case.dto"
+import { CreateTestRunCaseDto } from "./create-test-run-case.dto"
 
-export class UpdateTestRunDto extends PartialType(CreateTestRunDto) {
+export class UpdateTestRunDto {
+  @ApiProperty({ description: "The name of the test run", required: false })
+  @IsOptional()
+  @IsString()
+  name?: string
+
+  @ApiProperty({ description: "The ID of the related test plan", required: false, format: "uuid" })
+  @IsOptional()
+  @IsUUID()
+  test_plan_id?: string
+
   @ApiProperty({
-    type: [UpdateTestRunCaseDto],
+    type: [CreateTestRunCaseDto],
     description: "A list of test cases included in this run",
     required: false,
   })
   @IsOptional()
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
-  @Type(() => UpdateTestRunCaseDto)
-  test_cases?: UpdateTestRunCaseDto[]
+  @Type(() => CreateTestRunCaseDto)
+  test_cases?: Partial<CreateTestRunCaseDto>[]
 }

@@ -1,12 +1,57 @@
 import type { Role } from "./auth"
 
-export type Priority = "low" | "medium" | "high" | "critical"
-export type Criticality = "low" | "medium" | "high" | "blocker"
-export type TestCaseType = "manual" | "automated" | "exploratory"
-export type TestRunStatus = "pending" | "in-progress" | "completed" | "aborted"
-export type TestResultStatus = "passed" | "failed" | "skipped" | "blocked" | "not-run"
-export type AutomatedTestStatus = "passed" | "failed" | "skipped" | "error"
-export type ActivityLogType = "create" | "update" | "delete" | "execute" | "comment" | "login" | "logout"
+export enum Priority {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+  CRITICAL = "critical"
+}
+
+export enum Criticality {
+  LOW = "low",
+  MEDIUM = "medium",
+  HIGH = "high",
+  BLOCKER = "blocker"
+}
+
+export enum TestCaseType {
+  MANUAL = "manual",
+  AUTOMATED = "automated",
+  EXPLORATORY = "exploratory"
+}
+
+export enum TestRunStatus {
+  PENDING = "pending",
+  IN_PROGRESS = "in-progress",
+  COMPLETED = "completed",
+  ABORTED = "aborted"
+}
+
+export enum TestResultStatus {
+  PASSED = "passed",
+  FAILED = "failed",
+  SKIPPED = "skipped",
+  BLOCKED = "blocked",
+  NOT_RUN = "not-run"
+}
+
+export enum AutomatedTestStatus {
+  PASSED = "passed",
+  FAILED = "failed",
+  SKIPPED = "skipped",
+  ERROR = "error"
+}
+
+export enum ActivityLogType {
+  CREATE = "create",
+  UPDATE = "update",
+  DELETE = "delete",
+  EXECUTE = "execute",
+  COMMENT = "comment",
+  LOGIN = "login",
+  LOGOUT = "logout"
+}
+
 
 export interface Project {
   id: string

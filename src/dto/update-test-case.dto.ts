@@ -1,15 +1,60 @@
-import { PartialType } from "@nestjs/mapped-types"
-import { CreateTestCaseDto } from "./create-test-case.dto"
+// update-test-case.dto.ts
 import { ApiProperty } from "@nestjs/swagger"
-import { IsOptional, ValidateNested, ArrayMinSize } from "class-validator"
+import { IsString, IsOptional, IsUUID, IsEnum, ValidateNested, ArrayMinSize } from "class-validator"
 import { Type } from "class-transformer"
-import { UpdateTestStepDto } from "./update-test-step.dto"
+import { Priority, Criticality, TestCaseType } from "../types/test-management"
+import { PartialType } from "@nestjs/mapped-types"
+import { CreateTestStepDto } from "./create-test-step.dto"
 
-export class UpdateTestCaseDto extends PartialType(CreateTestCaseDto) {
-  @ApiProperty({ type: [UpdateTestStepDto], description: "A list of steps for the test case", required: false })
+export class UpdateTestCaseDto {
+  @ApiProperty()
   @IsOptional()
-  @ArrayMinSize(1)
+  @IsString()
+  title?: string
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  description?: string
+
+  @ApiProperty()
+  @IsOptional()
+  @IsEnum(Priority)
+  priority?: Priority
+
+  @ApiProperty()
+  @IsOptional()
+  @IsEnum(Criticality)
+  criticality?: Criticality
+
+  @ApiProperty()
+  @IsOptional()
+  @IsEnum(TestCaseType)
+  type?: TestCaseType
+
+  @ApiProperty({ type: [CreateTestStepDto], required: false })
+  @IsOptional()
   @ValidateNested({ each: true })
-  @Type(() => UpdateTestStepDto)
-  steps?: UpdateTestStepDto[]
+  @Type(() => CreateTestStepDto)
+  steps?: Partial<CreateTestStepDto>[]
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  input_data?: string
+
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  output_data?: string
+
+  @ApiProperty()
+  @IsOptional()
+  @IsUUID()
+  suite_id?: string
+
+  @ApiProperty()
+  @IsOptional()
+  @IsUUID()
+  project_id?: string
 }
