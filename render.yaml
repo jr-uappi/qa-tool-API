@@ -9,6 +9,10 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        fromDatabase:
-          name: seu-database-supabase
-          property: connectionString
+        value: postgres://postgres.quaqgnlyfsihminocdoi:JuobpwEqYUysgh3r@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x
+      - key: SUPABASE_URL
+        value: https://quaqgnlyfsihminocdoi.supabase.co
+      - key: SUPABASE_JWT_SECRET
+        value: O6ApgUIV+rxeXf0NCnk5lSVzl8AfJAimIfVyXV8oFWCXU3B8mDqc9QqD3ecmAAHXL1Lldtrcf23urdkS/307pw==
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1YXFnbmx5ZnNpaG1pbm9jZG9pIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTYzNjMwMiwiZXhwIjoyMDY1MjEyMzAyfQ.ON2Q0dFrOSNK8cljW-xMdKLFTPi30r7v_KX-BfxpmBk
